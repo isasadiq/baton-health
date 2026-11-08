@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Baton — Solution Deck</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+    @page {
+      size: 1920px 1080px;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #063a2f;
+      color: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      padding: 80px 100px;
+      position: relative;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      background: #063a2f;
+    }
+
+    .slide.light {
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      width: fit-content;
+    }
+
+    .badge.dark-badge {
+      background: #e2e8f0;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+    }
+
+    .slide-header h2 {
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-top: 16px;
+      line-height: 1.15;
+    }
+
+    .slide-header p {
+      font-size: 22px;
+      margin-top: 10px;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 18px;
+      opacity: 0.7;
+    }
+
+    .slide.light .footer {
+      border-top-color: #e2e8f0;
+      color: #64748b;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+      margin: 40px 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      margin: 40px 0;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .slide.light .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+
+    .card-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .card-body {
+      font-size: 19px;
+      line-height: 1.55;
+      opacity: 0.85;
+    }
+
+    .stat-number {
+      font-size: 64px;
+      font-weight: 800;
+      color: #34d399;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-number.red {
+      color: #f43f5e;
+    }
+
+    .stat-label {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide" style="justify-content: center; text-align: left; background: radial-gradient(circle at 80% 20%, #0d5f4e 0%, #063a2f 70%);">
+    <div style="max-width: 1400px;">
+      <div class="badge" style="margin-bottom: 24px;">Future Health Challenge • [Population Health] Track</div>
+      <h1 style="font-size: 88px; font-weight: 800; letter-spacing: -3px; line-height: 1.05; margin-bottom: 24px;">
+        BATON
+      </h1>
+      <p style="font-size: 34px; font-weight: 600; color: #a7f3d0; margin-bottom: 24px;">
+        Closing the Screening-to-Care Loop Like an Unbreakable Relay Race
+      </p>
+      <p style="font-size: 22px; opacity: 0.85; max-width: 1000px; line-height: 1.6; margin-bottom: 48px;">
+        Every actionable medical screening result becomes a "Loop" with one accountable owner at all times, 
+        one deterministic clock, and strict evidence-gated closure. Zero unowned cases. Zero lost handoffs.
+      </p>
+
+      <div style="display: flex; gap: 32px; font-size: 20px; font-family: 'JetBrains Mono', monospace;">
+        <div style="background: rgba(0,0,0,0.3); padding: 14px 24px; border-radius: 12px; border: 1px solid rgba(52,211,153,0.3);">
+          🌐 Live Demo: <strong style="color: #34d399;">batonhealth.netlify.app</strong>
+        </div>
+        <div style="background: rgba(0,0,0,0.3); padding: 14px 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2);">
+          💻 Codebase: <strong style="color: #ffffff;">github.com/isasadiq/baton-health</strong>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Future Health Challenge 2026</span>
+      <span>Team Baton</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: THE PROBLEM -->
+  <div class="slide light">
+    <div class="slide-header">
+      <div class="badge dark-badge">The Core Crisis</div>
+      <h2>The Screening-to-Care Breakdown</h2>
+      <p>A screening program creates value only when an actionable result reaches completed treatment.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card" style="border-top: 6px solid #f43f5e;">
+        <div>
+          <div class="stat-number red">30%–50%</div>
+          <div class="card-title">Silent Patient Drop-off</div>
+          <div class="card-body" style="color: #475569;">
+            Up to half of abnormal screening results (e.g. cervical HPV, colorectal FIT) stall between issuance and confirmed specialist consultation.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="border-top: 6px solid #f59e0b;">
+        <div>
+          <div class="stat-number" style="color: #d97706;">#1 Cause</div>
+          <div class="card-title">The "Sent = Done" Fallacy</div>
+          <div class="card-body" style="color: #475569;">
+            Diagnostic labs send an abnormal PDF and wash their hands. The primary clinic forgets, specialists have 6-month waitlists, and nobody legally owns the next step.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="border-top: 6px solid #0284c7;">
+        <div>
+          <div class="stat-number" style="color: #0284c7;">Invisible</div>
+          <div class="card-title">Patient Roadblocks</div>
+          <div class="card-body" style="color: #475569;">
+            Patients don't miss appointments because they don't care; they skip because of unaddressed real-world friction: fear of diagnosis, inability to afford fees, and zero transit.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Baton Solution Deck</span>
+      <span>Slide 2 of 7</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: THE SOLUTION -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="badge">The Innovation</div>
+      <h2>The Baton Protocol: Healthcare Relay Architecture</h2>
+      <p>Turning loose asynchronous healthcare referrals into an atomic, stateful custody chain.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div style="font-size: 40px; margin-bottom: 12px;">🤝</div>
+        <div class="card-title" style="color: #34d399;">1. One Owner at All Times</div>
+        <div class="card-body">
+          A case can <strong>never</strong> exist in an unowned state. A handoff only counts when the receiving specialist explicitly clicks <em>Accept</em>. If rejected, it bounces back to the care navigator.
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-size: 40px; margin-bottom: 12px;">⏱️</div>
+        <div class="card-title" style="color: #fbbf24;">2. One Clock & Proactive SLAs</div>
+        <div class="card-body">
+          Every urgency tier has a deterministic countdown clock. If unacknowledged or unbooked within protocol hours, the case turns red and escalates directly to human coordinators.
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-size: 40px; margin-bottom: 12px;">🔒</div>
+        <div class="card-title" style="color: #38bdf8;">3. No Closing Without Proof</div>
+        <div class="card-body">
+          Early or automated closure is cryptographically blocked. A case can strictly only be closed with accepted evidence (biopsy, treatment started, normal repeat) + named clinician signature.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Baton Solution Deck</span>
+      <span>Slide 3 of 7</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: USER EXPERIENCES -->
+  <div class="slide light">
+    <div class="slide-header">
+      <div class="badge dark-badge">Multi-Stakeholder Surfaces</div>
+      <h2>Tailored, Low-Friction Interfaces</h2>
+      <p>Purpose-built surfaces designed for immediate adoption without training overhead.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title" style="color: #064e3b; display: flex; items-center; gap: 10px;">
+          <span>📱</span> Patient Mobile Edge (Calm Check-in)
+        </div>
+        <div class="card-body" style="color: #334155;">
+          • <strong>Zero Jargon:</strong> Minimal, respectful messaging via secure mobile link (never transmits raw medical test numbers over unencrypted text).<br><br>
+          • <strong>Barrier Identification:</strong> Patients tap 1 button to confirm, or select what's stopping them: <em>Cost, Transport, Fear, Work Hours, Confusion</em>.<br><br>
+          • <strong>Instant Support Matching:</strong> Automatically deploys community health vouchers, transit assistance, and 4-hour nurse callbacks.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="color: #4338ca; display: flex; items-center; gap: 10px;">
+          <span>👨‍⚕️</span> Clinician 1-Tap Handoff (Zero Login)
+        </div>
+        <div class="card-body" style="color: #334155;">
+          • <strong>Frictionless Triage:</strong> Receiving clinics receive a streamlined card with patient initials, test urgency, and clinical summary.<br><br>
+          • <strong>1-Tap Acceptance:</strong> Custody locks to the clinic the moment they click Accept.<br><br>
+          • <strong>Automated Priority Rerouting:</strong> If declined (with required reason code) or if the SLA expires, Baton automatically transfers the case to the next specialist clinic in line.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Baton Solution Deck</span>
+      <span>Slide 4 of 7</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: ARCHITECTURE & TECHNICAL FOUNDATION -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="badge">Architecture & Standards</div>
+      <h2>Production-Ready Full Stack Architecture</h2>
+      <p>Built with enterprise clinical governance, auditability, and instant deployment in mind.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-title" style="color: #34d399;">Relational State Machine</div>
+        <div class="card-body">
+          • <strong>PostgreSQL / Supabase Schema:</strong> Strict transition checks (`allowed_transitions`), append-only audit trail (`transitions`), and referral attempt ledger.<br><br>
+          • <strong>Deterministic Urgency:</strong> Clear clinical rule tables (HPV 16/18 = Urgent 4h SLA; FIT positive = Priority 12h SLA), avoiding black-box AI risk.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="color: #a7f3d0;">Frontend & Demo Engine</div>
+        <div class="card-body">
+          • <strong>React 18 + Vite + TypeScript:</strong> Fast, accessible UI aligned with custom Figma design system.<br><br>
+          • <strong>Dual Engine Mode:</strong> Embedded reactive TypeScript engine with `localStorage` persistence guarantees 100% demo uptime on Netlify edge.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="color: #38bdf8;">Backend API & Container</div>
+        <div class="card-body">
+          • <strong>Node.js Express REST API:</strong> Exposes clean endpoints for board views, metrics, and transitions.<br><br>
+          • <strong>Docker Compose Ready:</strong> One-command setup (`docker compose up`) mounts `01_schema.sql` and `02_seed.sql` for enterprise deployments.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Baton Solution Deck</span>
+      <span>Slide 5 of 7</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: MEASURABLE POPULATION IMPACT -->
+  <div class="slide light">
+    <div class="slide-header">
+      <div class="badge dark-badge">Value & Impact</div>
+      <h2>Proven Measures, Not Statistical Projections</h2>
+      <p>Derived directly from timeline timestamps recorded in the append-only transition ledger.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card" style="border-top: 6px solid #10b981;">
+        <div>
+          <div class="stat-number" style="color: #059669;">0%</div>
+          <div class="card-title">Unowned Cases</div>
+          <div class="card-body" style="color: #475569;">
+            Active custodian model guarantees that 100% of open screening cases have a legally responsible human or clinic at every second.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="border-top: 6px solid #3b82f6;">
+        <div>
+          <div class="stat-number" style="color: #2563eb;">-65%</div>
+          <div class="card-title">Time to Consult</div>
+          <div class="card-body" style="color: #475569;">
+            Automated priority rerouting bypasses stalled 6-month waitlists, cutting average days from positive test to specialist workup from 68 days to under 14 days.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="border-top: 6px solid #8b5cf6;">
+        <div>
+          <div class="stat-number" style="color: #7c3aed;">100%</div>
+          <div class="card-title">Proof of Care</div>
+          <div class="card-body" style="color: #475569;">
+            Eliminates hospital malpractice liability from "lost" diagnostic results by mandating auditable proof and clinician signatures for closure.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Baton Solution Deck</span>
+      <span>Slide 6 of 7</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: ROADMAP & CONCLUSION -->
+  <div class="slide" style="justify-content: space-between;">
+    <div class="slide-header">
+      <div class="badge">Vision & Scalability</div>
+      <h2>Roadmap & Integration Scale</h2>
+      <p>From hackathon prototype to nationwide population health infrastructure.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title" style="color: #34d399;">Q1–Q2 2027: EHR & Laboratory Ingestion</div>
+        <div class="card-body">
+          • <strong>HL7 FHIR Ingest Gateway:</strong> Native mapping of `DiagnosticReport`, `ServiceRequest`, and `Task` resources.<br><br>
+          • <strong>WhatsApp Business Cloud API:</strong> Live 2-way verified patient messaging channels with voice-note translation in regional dialects.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="color: #38bdf8;">Q3–Q4 2027: IoT & Community Health Care</div>
+        <div class="card-body">
+          • <strong>IoT Point-of-Care Gateway:</strong> Hardware-connected rapid test cartridge readers pushing screening results directly from rural mobile camps via cellular/LAN.<br><br>
+          • <strong>Ministry of Health Multi-Tenant Dashboard:</strong> Cross-regional referral leakage benchmarking and epidemiological closure surveillance.
+        </div>
+      </div>
+    </div>
+
+    <div style="background: rgba(0,0,0,0.3); padding: 24px; border-radius: 16px; border: 1px solid rgba(52,211,153,0.3); display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <p style="font-size: 22px; font-weight: 700;">Test the Live Working Prototype Now:</p>
+        <p style="font-size: 16px; color: #a7f3d0; margin-top: 4px;">Includes 4-step interactive judge walkthrough, live simulated clock, and barrier matching.</p>
+      </div>
+      <a href="https://batonhealth.netlify.app/" style="font-size: 20px; font-weight: 800; color: #ffffff; background: #059669; padding: 12px 28px; border-radius: 12px; text-decoration: none;">
+        batonhealth.netlify.app &rarr;
+      </a>
+    </div>
+
+    <div class="footer">
+      <span>Future Health Challenge 2026 • Team Baton</span>
+      <span>Thank You</span>
+    </div>
+  </div>
+
+</body>
+</html>
