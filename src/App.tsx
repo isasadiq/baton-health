@@ -32,7 +32,6 @@ import { ClosureModal } from './components/ClosureModal';
 import { MetricsView } from './components/MetricsView';
 import { MessagesView } from './components/MessagesView';
 import { NewLoopModal } from './components/NewLoopModal';
-import { AutoDemoController } from './components/AutoDemoController';
 
 export const App: React.FC = () => {
   // Active Sidebar Nav
@@ -301,16 +300,7 @@ export const App: React.FC = () => {
               </div>
             </div>
 
-            {/* One-Click Autonomous Demo Player */}
-            <AutoDemoController
-              onOpenPatientPortal={(tok) => setPatientToken(tok)}
-              onClosePatientPortal={() => setPatientToken(null)}
-              onOpenClinicianAction={(id) => setClinicianLoopId(id)}
-              onCloseClinicianAction={() => setClinicianLoopId(null)}
-              onOpenClosureModal={(id) => setClosureLoopId(id)}
-              onCloseClosureModal={() => setClosureLoopId(null)}
-              onSwitchNav={(nav) => setCurrentNav(nav)}
-            />
+
 
             {/* Filter Card & Legend (matching Figma) */}
             <div className="bg-white border border-slate-200/80 rounded-2xl p-3 px-5 mb-6 shadow-sm flex flex-wrap items-center justify-between gap-4 shrink-0">
