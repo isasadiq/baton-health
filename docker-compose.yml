@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: baton-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: baton_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./supabase/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./supabase/02_seed.sql:/docker-entrypoint-initdb.d/02_seed.sql
+      - baton_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: baton-api
+    environment:
+      PORT: 4000
+      DATABASE_URL: postgres://postgres:password@db:5432/baton_db
+    ports:
+      - '4000:4000'
+    depends_on:
+      - db
+
+volumes:
+  baton_data:
