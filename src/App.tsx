@@ -32,7 +32,7 @@ import { ClosureModal } from './components/ClosureModal';
 import { MetricsView } from './components/MetricsView';
 import { MessagesView } from './components/MessagesView';
 import { NewLoopModal } from './components/NewLoopModal';
-import { JudgeTourBanner } from './components/JudgeTourBanner';
+import { AutoDemoController } from './components/AutoDemoController';
 
 export const App: React.FC = () => {
   // Active Sidebar Nav
@@ -301,11 +301,15 @@ export const App: React.FC = () => {
               </div>
             </div>
 
-            {/* Judge & Evaluator Interactive Tour */}
-            <JudgeTourBanner
-              onOpenPatientDemo={(tok) => setPatientToken(tok)}
-              onOpenClinicianDemo={(id) => setClinicianLoopId(id)}
+            {/* One-Click Autonomous Demo Player */}
+            <AutoDemoController
+              onOpenPatientPortal={(tok) => setPatientToken(tok)}
+              onClosePatientPortal={() => setPatientToken(null)}
+              onOpenClinicianAction={(id) => setClinicianLoopId(id)}
+              onCloseClinicianAction={() => setClinicianLoopId(null)}
               onOpenClosureModal={(id) => setClosureLoopId(id)}
+              onCloseClosureModal={() => setClosureLoopId(null)}
+              onSwitchNav={(nav) => setCurrentNav(nav)}
             />
 
             {/* Filter Card & Legend (matching Figma) */}
