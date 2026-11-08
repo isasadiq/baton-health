@@ -3,7 +3,7 @@ import {
   X,
   FileCheck2,
   AlertOctagon,
-  CheckCircle,
+  CheckCircle2,
   ShieldAlert,
   UserCheck
 } from 'lucide-react';
@@ -52,21 +52,30 @@ export const ClosureModal: React.FC<ClosureModalProps> = ({ loopId, onClose }) =
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl flex flex-col">
-        {/* Header */}
-        <div className="bg-slate-950 p-5 border-b border-slate-800 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="h-9 w-9 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center border border-blue-500/30">
-              <FileCheck2 className="h-5 w-5" />
+    <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
+      <div className="bg-white border border-slate-200 rounded-[28px] max-w-lg w-full overflow-hidden shadow-2xl flex flex-col text-slate-800">
+        
+        {/* Header - Clean Figma Style */}
+        <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-[#F8FAFC]">
+          <div className="flex items-center gap-3">
+            <div className="h-11 w-11 rounded-2xl bg-emerald-50 border border-emerald-200/80 flex items-center justify-center text-[#063a2f] shadow-sm">
+              <FileCheck2 className="h-6 w-6 text-[#063a2f]" />
             </div>
             <div>
-              <h2 className="font-bold text-sm text-white">Documented Loop Closure Sign-off</h2>
-              <p className="text-xs text-slate-400">Strict Evidence Verification Protocol</p>
+              <div className="flex items-center gap-2">
+                <h2 className="font-bold text-slate-900 text-base">Documented Loop Closure</h2>
+                <span className="px-2 py-0.5 rounded-full bg-emerald-100/70 text-[#063a2f] text-[10px] font-bold uppercase tracking-wider">
+                  Audit Verified
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 font-medium">Strict Evidence Verification Protocol</p>
             </div>
           </div>
 
-          <button onClick={onClose} className="p-1 rounded-lg text-slate-400 hover:text-white">
+          <button
+            onClick={onClose}
+            className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 transition-colors"
+          >
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -74,37 +83,37 @@ export const ClosureModal: React.FC<ClosureModalProps> = ({ loopId, onClose }) =
         {/* Form Body */}
         <div className="p-6 space-y-4 text-xs">
           {/* Rule Reminder */}
-          <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 text-slate-300 space-y-1">
-            <div className="flex items-center gap-2 text-blue-400 font-semibold">
-              <UserCheck className="h-4 w-4" />
+          <div className="p-3.5 bg-emerald-50/70 rounded-2xl border border-emerald-200/70 text-slate-700 space-y-1">
+            <div className="flex items-center gap-2 text-[#063a2f] font-bold text-xs">
+              <UserCheck className="h-4 w-4 text-[#063a2f]" />
               <span>Baton Clinical Governance Rule</span>
             </div>
-            <p className="text-[11px] text-slate-400 leading-relaxed">
-              A screening loop can <strong>never</strong> be closed automatically by a system job.
+            <p className="text-[11px] text-slate-600 leading-relaxed">
+              A screening loop can <strong className="text-slate-900">never</strong> be closed automatically by a system job.
               It strictly requires proof of an accepted clinical evidence type and the legal signature
               of a named clinician.
             </p>
           </div>
 
           {errorMessage && (
-            <div className="p-3.5 bg-rose-500/15 border border-rose-500/30 rounded-xl text-rose-300 flex items-start gap-2.5 animate-in shake">
-              <AlertOctagon className="h-4 w-4 text-rose-400 shrink-0 mt-0.5" />
+            <div className="p-3.5 bg-rose-50 border border-rose-200 rounded-xl text-rose-800 flex items-start gap-2.5 animate-in shake">
+              <AlertOctagon className="h-4 w-4 text-rose-600 shrink-0 mt-0.5" />
               <div className="space-y-0.5">
                 <p className="font-bold text-xs">Closure Validation Rejected:</p>
-                <p className="text-[11px] text-rose-200">{errorMessage}</p>
+                <p className="text-[11px] text-rose-700">{errorMessage}</p>
               </div>
             </div>
           )}
 
           {/* Evidence Type */}
-          <div>
-            <label className="block text-slate-300 font-semibold mb-1">
+          <div className="space-y-1.5">
+            <label className="block text-slate-700 font-bold text-xs">
               Accepted Evidence Type:
             </label>
             <select
               value={evidenceType}
               onChange={(e) => setEvidenceType(e.target.value as ClosureEvidenceCode)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-blue-500"
+              className="w-full bg-[#FAF9F6] border border-slate-200 rounded-xl p-3 text-xs text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-[#063a2f]"
             >
               {CLOSURE_EVIDENCE_TYPES.map((t) => (
                 <option key={t.code} value={t.code}>
@@ -116,10 +125,10 @@ export const ClosureModal: React.FC<ClosureModalProps> = ({ loopId, onClose }) =
 
           {/* Unreachable attempts requirement */}
           {evidenceType === 'patient_unreachable_documented' && (
-            <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl space-y-2">
-              <div className="flex items-center justify-between text-amber-300">
-                <span className="font-semibold">Documented Outreach Attempts (Min: 3):</span>
-                <span className="font-mono font-bold text-sm">{attempts}</span>
+            <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-xl space-y-2">
+              <div className="flex items-center justify-between text-amber-900">
+                <span className="font-bold text-xs">Documented Outreach Attempts (Min: 3):</span>
+                <span className="font-mono font-bold text-sm bg-white px-2 py-0.5 rounded border border-amber-200">{attempts}</span>
               </div>
               <input
                 type="range"
@@ -127,19 +136,19 @@ export const ClosureModal: React.FC<ClosureModalProps> = ({ loopId, onClose }) =
                 max="5"
                 value={attempts}
                 onChange={(e) => setAttempts(Number(e.target.value))}
-                className="w-full accent-amber-500"
+                className="w-full accent-[#063a2f]"
               />
               {attempts < 3 && (
-                <p className="text-[10px] text-rose-400 font-semibold">
-                  ⚠️ Protocol requires at least 3 documented contact attempts to close as unreachable!
+                <p className="text-[11px] text-rose-600 font-semibold">
+                  Protocol requires at least 3 documented contact attempts to close as unreachable!
                 </p>
               )}
             </div>
           )}
 
           {/* Named Clinician */}
-          <div>
-            <label className="block text-slate-300 font-semibold mb-1">
+          <div className="space-y-1.5">
+            <label className="block text-slate-700 font-bold text-xs">
               Named Clinician Sign-off:
             </label>
             <input
@@ -147,13 +156,13 @@ export const ClosureModal: React.FC<ClosureModalProps> = ({ loopId, onClose }) =
               value={signedBy}
               onChange={(e) => setSignedBy(e.target.value)}
               placeholder="e.g. Dr. Amina Bello"
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-blue-500 font-semibold"
+              className="w-full bg-[#FAF9F6] border border-slate-200 rounded-xl p-3 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#063a2f] font-semibold"
             />
           </div>
 
           {/* Clinical Evidence Note */}
-          <div>
-            <label className="block text-slate-300 font-semibold mb-1">
+          <div className="space-y-1.5">
+            <label className="block text-slate-700 font-bold text-xs">
               Documentation & Audit Evidence Note:
             </label>
             <textarea
@@ -161,21 +170,21 @@ export const ClosureModal: React.FC<ClosureModalProps> = ({ loopId, onClose }) =
               value={clinicalNotes}
               onChange={(e) => setClinicalNotes(e.target.value)}
               placeholder="Record chart reference number, treatment clinic, or notes..."
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+              className="w-full bg-[#FAF9F6] border border-slate-200 rounded-xl p-3 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#063a2f]"
             />
           </div>
 
           {/* Buttons */}
-          <div className="flex items-center gap-3 pt-3">
+          <div className="flex items-center gap-3 pt-2">
             <button
               onClick={onClose}
-              className="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition-colors"
+              className="flex-1 py-3 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition-colors"
             >
               Cancel
             </button>
             <button
               onClick={handleCloseLoop}
-              className="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-colors shadow-lg shadow-blue-900/30"
+              className="flex-1 py-3 rounded-2xl bg-[#063a2f] hover:bg-[#084c3e] text-white font-bold text-xs transition-all shadow-sm hover:shadow"
             >
               Sign & Seal Closure
             </button>
